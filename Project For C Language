@@ -1,1 +1,262 @@
 
+/* MINI PROJECT PROGRAMMING - BOOK RENTAL APPLICATION (16/1/2022)
+
+   TEAM MEMBERS: 1. IZAT HAKIMI BIN MOHAMED ISMAYATIM (S21B0067)
+                 2. NURUL NAJIHAH BINTI BASARI (S21A0077)
+                 3. NOR LIYANA ATHIRAH BINTI MUHAMMADI (S21A0039)
+                 4. HAKIMAH BINTI MAT HARUN (S21A0024)
+                 5. ATHIRAH SYAZWANI BINTI AZMAN (S21A0021)  
+*/
+
+//Pre-processor Section
+#include<stdio.h>
+#include<conio.h>
+#include<time.h>
+
+//Global Variable Section
+int tarikhpinjam(int day1, int month1, int year1)       //function RETURN for borrow date
+{
+    int borrowDate; 
+    borrowDate = day1*1 + month1*30 + year1*365;        
+    return borrowDate;
+
+}
+int tarikhHantar(int day2, int month2, int year2)       //function RETURN for return date
+{
+    int returnDate;
+    returnDate = day2*1 + month2*30 + year2*365;
+    return returnDate;
+}
+int tarikhHarini(int day3, int month3, int year3)       //function RETURN for current date
+{
+    int currentDate;
+    currentDate = day3*1 + month3*30 + year3*365;
+    return currentDate;
+}
+void date()                                             //function for borrow date
+{
+    time_t date;
+    time(&date);
+    printf(ctime(&date));
+}
+void listbook()                                         //function for book list
+{
+    printf("\t\t------------------------------------------------------------------------------------------------------------------\n");
+            printf("\t\t| \tNo\t | \tBook\t\t\t\t | \tAuthor\t\t\t | \tGenre\t\t | \n");
+            printf("\t\t------------------------------------------------------------------------------------------------------------------\n");
+            printf("\t\t| \t1\t | \tDesign For Learning\t\t | \tEdTech Books\t\t | \tEducation\t | \n");
+            printf("\t\t------------------------------------------------------------------------------------------------------------------\n");
+            printf("\t\t| \t2\t | \tAccounting Information System\t | \tPerson Higher Education\t | \tEducation\t | \n");
+            printf("\t\t------------------------------------------------------------------------------------------------------------------\n");
+            printf("\t\t| \t3\t | \tExpert C Programming \t\t | \tPearson Education\t | \tEducation\t | \n");
+            printf("\t\t------------------------------------------------------------------------------------------------------------------\n");
+            printf("\t\t| \t4\t | \tSengjakala \t\t\t | \tDewan Bahasa & Pustaka\t | \tFiction\t\t | \n");
+            printf("\t\t------------------------------------------------------------------------------------------------------------------\n");
+            printf("\t\t| \t5\t | \tLife is a Story \t\t | \tDewan Bahasa & Pustaka\t | \tFiction\t\t | \n");
+            printf("\t\t------------------------------------------------------------------------------------------------------------------\n");
+            printf("\t\t| \t6\t | \tDia Imamku \t\t\t | \tSR Publication\t\t | \tFiction\t\t | \n");
+            printf("\t\t------------------------------------------------------------------------------------------------------------------\n");
+            printf("\t\t| \t7\t | \tCalon Isteri Buat Suami \t | \tKarya Publika\t\t | \tFiction\t\t | \n");
+            printf("\t\t------------------------------------------------------------------------------------------------------------------\n");
+            printf("\n");
+}
+
+//Main Function Section
+int main()                                              
+{
+    char name[50];
+    int workID;
+    int custID;
+    char phoneNum[50];
+    char answ;      // VARIABLE FOR LOOP TRIGER
+    int start;      // VARIABLE FOR ENTERING SYSTEM
+    int bookNum;
+    int borrow, returnDate, currentDate; // VARIABLE FOR STORE A FUNCTION
+
+    printf("Enter The Employee ID : ");
+    scanf(" %d" , &workID);
+
+    while(workID != 210067)                                                 // log in system 
+    {
+        printf("\nWRONG ID ENTERED. PLEASE INSERT THE CORRECT ID \n");
+        printf("Enter The Employee ID : ");
+        scanf(" %d" , &workID);
+        printf("\n");
+    }
+        printf("\t\t\t\t\tLog in Succesfull \n");
+    do                                                                      // entering system
+    {
+        printf("\n");
+        printf("******************************* WELCOME TO THE BOOK RENTAL SYSTEM *******************************\n\n");
+        printf("\n");
+        
+
+        printf("Please Choose [1 = Rent, 2 = Return ] : ");                 // selection borrow or return book
+        scanf(" %d" , &start);
+        printf("\n");
+
+
+        if (start == 1)                                                     // borrow book 
+        {
+            printf("Enter borrower Name : ");
+            scanf(" %s" , &name);
+            printf("Enter The Last 5 Digit borrower ID : ");
+            scanf(" %d" , &custID);
+            printf("Enter borrower Phone Number : ");
+            scanf(" %s" , &phoneNum);
+            printf("\n");
+            listbook();        // CALLING FUNCTION FOR VOID LISTBOOK 
+            printf("Enter The Number Of The Book You Want to Rent : ");
+            scanf(" %d" , &bookNum);
+            printf("\n");
+
+            if(bookNum == 1)
+            {
+                printf("********************* Book Rental Receipt *********************\n");
+                printf("Borrower Name \t\t: %s \n" ,name);
+                printf("Borrower ID \t\t:  %d \n" ,custID);
+                printf("Borrower Phone Num \t: %s \n" ,phoneNum);
+                printf("Book Name  \t\t: Design For Learning \n");
+                printf("Book Type \t\t: Education \n");
+                printf("Date Rental \t\t:");
+                date();     // CALLING DATE FUNCTION
+                printf("\n");
+                printf("\n");
+                printf("REMEMBER. PLEASE RETURN THE BOOK BEFORE 14 DAYS AFTER YOU BORROW IT. \n");
+            }
+            else if(bookNum == 2)
+            {
+                printf("********************* Book Rental Receipt *********************\n");
+                printf("Borrower Name \t\t: %s \n" ,name);
+                printf("Borrower ID \t\t:  %d \n" ,custID);
+                printf("Borrower Phone Num \t: %s \n" ,phoneNum);
+                printf("Book Name  \t\t: Accounting Information System \n");
+                printf("Book Type \t\t: Education \n");
+                printf("Date Rental \t\t: ");
+                date();     // CALLING DATE FUNCTION
+                printf("\n");
+                printf("\n");
+                printf("REMEMBER. PLEASE RETURN THE BOOK BEFORE 14 DAYS AFTER YOU BORROW IT. \n");
+            }
+            else if(bookNum == 3)
+            {
+                printf("********************* Book Rental Receipt *********************\n");
+                printf("Borrower Name \t\t: %s \n" ,name);
+                printf("Borrower ID \t\t:  %d \n" ,custID);
+                printf("Borrower Phone Num \t: %s \n" ,phoneNum);
+                printf("Book Name  \t\t: Expert C Programming\n");
+                printf("Book Type \t\t: Education \n");
+                printf("Date Rental \t\t: ");
+                date();     // CALLING DATE FUNCTION
+                printf("\n");
+                printf("\n");
+                printf("REMEMBER. PLEASE RETURN THE BOOK BEFORE 14 DAYS AFTER YOU BORROW IT. \n");
+            }
+            else if (bookNum == 4)
+            {
+                printf("********************* Book Rental Receipt *********************\n");
+                printf("Borrower Name \t\t: %s \n" ,name);
+                printf("Borrower ID \t\t:  %d \n" ,custID);
+                printf("Borrower Phone Num \t: %s \n" ,phoneNum);
+                printf("Book Name  \t\t: Segjakala \n");
+                printf("Book Type \t\t: Fiction \n");
+                printf("Date Rental \t\t: ");
+                date();     // CALLING DATE FUNCTION
+                printf("\n");
+                printf("\n");
+                printf("REMEMBER. PLEASE RETURN THE BOOK BEFORE 14 DAYS AFTER YOU BORROW IT. \n");
+            }
+            else if( bookNum == 5)
+            {
+                printf("********************* Book Rental Receipt *********************\n");
+                printf("Borrower Name \t\t: %s \n" ,name);
+                printf("Borrower ID \t\t:  %d \n" ,custID);
+                printf("Borrower Phone Num \t: %s \n" ,phoneNum);
+                printf("Book Name  \t\t: Life is a story \n");
+                printf("Book Type \t\t: Fiction \n");
+                printf("Date Rental \t\t: ");
+                date();     // CALLING DATE FUNCTION
+                printf("\n");
+                printf("\n");
+                printf("REMEMBER. PLEASE RETURN THE BOOK BEFORE 14 DAYS AFTER YOU BORROW IT. \n");
+            }
+            else if(bookNum == 6)
+            {
+                printf("********************* Book Rental Receipt *********************\n");
+                printf("Borrower Name \t\t: %s \n" ,name);
+                printf("Borrower ID \t\t:  %d \n" ,custID);
+                printf("Borrower Phone Num \t: %s \n" ,phoneNum);
+                printf("Book Name  \t\t: Dia Imamku \n");
+                printf("Book Type \t\t: Fiction \n");
+                printf("Date Rental \t\t: ");
+                date();     // CALLING DATE FUNCTION
+                printf("\n");
+                printf("\n");
+                printf("REMEMBER. PLEASE RETURN THE BOOK BEFORE 14 DAYS AFTER YOU BORROW IT. \n");
+            }
+            else if(bookNum == 7)
+            {
+                printf("********************* Book Rental Receipt *********************\n");
+                printf("Borrower Name \t\t: %s \n" ,name);
+                printf("Borrower ID \t\t:  %d \n" ,custID);
+                printf("Borrower Phone Num \t: %s \n" ,phoneNum);
+                printf("Book Name  \t\t: calon Isteri Buat Suami \n");
+                printf("Book Type \t\t: Fiction \n");
+                printf("Date Rental \t\t: ");
+                date();     // CALLING DATE FUNCTION
+                printf("\n");
+                printf("\n");
+                printf("REMEMBER. PLEASE RETURN THE BOOK BEFORE 14 DAYS AFTER YOU BORROW IT. \n");
+            }
+
+        }
+        else if(start == 2)                                                     // return book
+        {
+            int day1, day2, day3, month1, month2, month3, year1, year2, year3;
+
+            printf("Enter Borrow date (dd/mm/yyyy) : "); 
+            scanf("%d/%d/%d", &day1, &month1, &year1);
+
+            borrow = tarikhpinjam(day1,month1,year1);                           // calling borrow function
+            //int borrowDate = day1 + month1*100 + year1*1000;
+
+            printf("Enter Return due date (dd/mm/yyyy) : "); 
+            scanf("%d/%d/%d", &day2, &month2, &year2);
+
+            returnDate = tarikhHantar(day2,month2,year2);                       // calling return function
+            //int returnDate = day2 + month2*100 + year2*1000;
+
+            printf("Enter Current date (dd/mm/yyyy) : "); 
+            scanf("%d/%d/%d", &day3, &month3, &year3);
+
+            currentDate = tarikhHarini(day3,month3,year3);                      // calling current datr function
+            //int currentDate = day3 + month3*100 + year3*1000;
+
+            if(currentDate < returnDate)                                        // comparing date to see whether it late or early
+            {   
+                printf("\n\n");
+                printf("No Fine Fees Will Be Charge. The Book Return Before The Due Date. \n");
+            } 
+            else if (currentDate > returnDate)
+            {
+                printf("\n\n");
+                printf("Fine Fees Will Be Charge. The Book Return After The Due Date. \n");
+                float fine = 1.00; 
+                float finefees = currentDate - returnDate;                  // fine fees process if they late
+                printf("Please Pay : RM %0.2f" , finefees);
+
+            } 
+        }
+
+
+                        
+        printf("\n\n");                                                     // loop for next customer
+        printf("Do you wish to continue [Y = Yes , N = NO]? ");
+        scanf (" %c" , &answ);
+
+    } while (answ == 'Y' || answ == 'y');                                   // condition for looping start
+    
+
+   
+    return 0;
+}
